@@ -1,27 +1,40 @@
-import { useEffect } from "react";
 import supabase from "../utils/supabase";
+import useAuth from "../utils/useAuth";
 
 export default function Home() {
-  useEffect(() => {
-    console.log(supabase.auth.session());
-  }, []);
+  const { user, loading } = useAuth();
+  // console.log(user, loading);
   const signInWithSlack = async () => {
-    const { user, session, error } = await supabase.auth.signIn({
+    await supabase.auth.signIn({
       provider: "slack",
     });
-    console.log(user, session, error);
   };
+  if (loading) {
+    return null;
+  }
   return (
     <div>
-      <button
-        onClick={async (e) => {
-          e.preventDefault();
-          await signInWithSlack();
-        }}
-        type="button"
-      >
-        Sign In With Slack
-      </button>
+      {user ? (
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            await supabase.auth.signOut();
+          }}
+          type="button"
+        >
+          Sign Out
+        </button>
+      ) : (
+        <button
+          onClick={async (e) => {
+            e.preventDefault();
+            await signInWithSlack();
+          }}
+          type="button"
+        >
+          Sign In With Slack
+        </button>
+      )}
     </div>
   );
 }
