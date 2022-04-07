@@ -61,7 +61,7 @@ export const getStaticProps = async () => {
   posts.sort((a, b) => {
     const aTime = new Date(a.date).getTime();
     const bTime = new Date(b.date).getTime();
-    return aTime < bTime;
+    return bTime - aTime;
   });
 
   return {
