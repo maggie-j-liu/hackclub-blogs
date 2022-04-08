@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@supabase/supabase-js': ^1.33.3
+  '@tailwindcss/line-clamp': ^0.3.1
   autoprefixer: ^10.4.4
   date-fns: ^2.28.0
   eslint: 8.12.0
@@ -24,6 +25,7 @@ dependencies:
   rss-parser: 3.12.0
 
 devDependencies:
+  '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.23
   autoprefixer: 10.4.4_postcss@8.4.12
   eslint: 8.12.0
   eslint-config-next: 12.1.4_eslint@8.12.0+next@12.1.4
@@ -295,6 +297,14 @@ packages:
     transitivePeerDependencies:
       - encoding
     dev: false
+
+  /@tailwindcss/line-clamp/0.3.1_tailwindcss@3.0.23:
+    resolution: {integrity: sha512-pNr0T8LAc3TUx/gxCfQZRe9NB2dPEo/cedPHzUGIPxqDMhgjwNm6jYxww4W5l0zAsAddxr+XfZcqttGiFDgrGg==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.0.23_autoprefixer@10.4.4
+    dev: true
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}

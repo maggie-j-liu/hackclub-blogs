@@ -10,7 +10,7 @@ export default function Home({ posts }) {
   const { user, loading } = useAuth();
 
   return (
-    <Layout>
+    <Layout maxW="max-w-4xl">
       <h1 className="mx-auto w-max bg-gradient-to-r from-red to-orange bg-clip-text pb-2 text-center text-6xl font-extrabold text-transparent">
         Hack Club Blogs
       </h1>
@@ -27,7 +27,10 @@ export default function Home({ posts }) {
           </Link>
         </p>
       ) : (
-        <Posts posts={posts} />
+        <>
+          <div className="h-8" />
+          <Posts posts={posts} />
+        </>
       )}
     </Layout>
   );
@@ -37,13 +40,18 @@ export const getStaticProps = async () => {
   const { data: blogs } = await supabase.from("blogs").select();
   const parser = new Parser();
   const parsePromises = blogs.map((blog) => parser.parseURL(blog.link));
-  const feeds = await Promise.all(parsePromises);
+  const feeds = await Promise.allSettled(parsePromises);
   const posts = [];
-  for (const feed of feeds) {
-    for (const item of feed.items) {
+  for (let i = 0; i < feeds.length; i++) {
+    const feed = feeds[i];
+    if (feed.status === "rejected") {
+      console.log("rejected", blogs[i].link);
+      continue;
+    }
+    for (const item of feed.value.items) {
       posts.push({
         title: item.title,
-        description: item.content,
+        description: item.contentSnippet,
         link: item.link,
         date: item.isoDate,
       });

@@ -35,7 +35,7 @@ const New = () => {
           type="url"
           value={link}
           onChange={(e) => setLink(e.target.value)}
-          className="w-80 rounded border-2 border-muted px-2 py-1 text-lg"
+          className="w-80 rounded border-2 border-red px-2 py-1 text-lg focus:border-orange focus:outline-none"
           placeholder="https://example.com/rss.xml"
         />
       </label>
