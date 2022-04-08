@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import supabase from "../utils/supabase";
 import useAuth from "../utils/useAuth";
 import { useRouter } from "next/router";
+import Layout from "../components/Layout";
 const New = () => {
   const { loading, user } = useAuth();
   const [link, setLink] = useState("");
@@ -26,26 +27,30 @@ const New = () => {
     return null;
   }
   return (
-    <div>
-      <h1>Add a Blog</h1>
-      <label>
-        <p>RSS Feed Link</p>
+    <Layout>
+      <h1 className="text-5xl font-bold text-red">Add a Blog</h1>
+      <label className="mt-6 block">
+        <span className="block text-xl">RSS Feed Link</span>
         <input
           type="url"
           value={link}
           onChange={(e) => setLink(e.target.value)}
+          className="w-80 rounded border-2 border-muted px-2 py-1 text-lg"
+          placeholder="https://example.com/rss.xml"
         />
       </label>
       <button
+        className="mt-3 rounded-lg bg-gradient-to-r from-red to-orange px-6 py-1.5 text-xl font-semibold text-white duration-100 hover:scale-105 focus:scale-105 disabled:saturate-0"
         type="button"
         onClick={(e) => {
           e.preventDefault();
           submit();
         }}
+        disabled={!link}
       >
         Submit
       </button>
-    </div>
+    </Layout>
   );
 };
 
