@@ -1,6 +1,8 @@
 import useAuth from "../utils/useAuth";
 import signIn from "../utils/signIn";
 import Link from "next/link";
+import supabase from "../utils/supabase";
+
 const Navbar = () => {
   const { user, loading } = useAuth();
   return (
@@ -16,9 +18,21 @@ const Navbar = () => {
         </div>
         <div>
           {loading ? null : user ? (
-            <Link href={`/user/${user.user_metadata.sub}`}>
-              <a>{user.user_metadata.name}</a>
-            </Link>
+            <>
+              <Link href={`/user/${user.user_metadata.sub}`}>
+                <a>{user.user_metadata.name}</a>
+              </Link>{" "}
+              &bull;{" "}
+              <button
+                type="button"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await supabase.auth.signOut();
+                }}
+              >
+                Sign Out
+              </button>
+            </>
           ) : (
             <button
               type="button"

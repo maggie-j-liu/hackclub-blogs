@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     colors: {
+      transparent: "transparent",
       // from https://theme.hackclub.com
       darker: "#121217",
       dark: "#17171d",
