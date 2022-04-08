@@ -2,15 +2,11 @@ import supabase from "../utils/supabase";
 import useAuth from "../utils/useAuth";
 import Parser from "rss-parser";
 import Posts from "../components/Posts";
+import signIn from "../utils/signIn";
 
 export default function Home({ posts }) {
   const { user, loading } = useAuth();
-  // console.log(user, loading);
-  const signInWithSlack = async () => {
-    await supabase.auth.signIn({
-      provider: "slack",
-    });
-  };
+
   if (loading) {
     return null;
   }
@@ -30,7 +26,7 @@ export default function Home({ posts }) {
         <button
           onClick={async (e) => {
             e.preventDefault();
-            await signInWithSlack();
+            await signIn();
           }}
           type="button"
         >

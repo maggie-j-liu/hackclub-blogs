@@ -1,5 +1,5 @@
 import Image from "next/image";
-import supabase from "../utils/supabase";
+import supabase from "../../utils/supabase";
 import format from "date-fns/format";
 const ProfilePage = ({ info }) => {
   return (
@@ -12,10 +12,10 @@ const ProfilePage = ({ info }) => {
             alt={`${info.username}'s avatar`}
           />
         </div>
-        <h1 className="mt-2 text-4xl font-semibold text-gray-600">
+        <h1 className="text-gray-600 mt-2 text-4xl font-semibold">
           {info.username}
         </h1>
-        <p className="mt-1 text-xl text-gray-500">
+        <p className="text-gray-500 mt-1 text-xl">
           Joined on {format(new Date(info.created_at), "PPP")}
         </p>
       </div>
