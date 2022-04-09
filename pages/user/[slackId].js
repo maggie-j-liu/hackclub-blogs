@@ -30,7 +30,7 @@ const ProfilePage = ({ info }) => {
         </p>
       </div>
       {info.blogs.length === 0 ? (
-        <p className="font-semibold text-center text-muted">
+        <p className="pt-24 text-lg font-semibold text-center text-muted">
           No blogs added yet!
         </p>
       ) : (

@@ -26,9 +26,11 @@ const Navbar = () => {
           {loading ? null : user ? (
             <>
               <Link href={`/user/${user.user_metadata.sub}`}>
-                <a>{user.user_metadata.name}</a>
-              </Link>{" "}
-              &bull;{" "}
+                <a className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100">
+                  <Icon glyph="person" /> <span>{user.user_metadata.name}</span>
+                </a>
+              </Link>
+              &nbsp;&nbsp;
               <button
                 type="button"
                 className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100"
