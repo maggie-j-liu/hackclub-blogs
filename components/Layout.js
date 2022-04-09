@@ -9,7 +9,7 @@ const Layout = ({ children, maxW = "max-w-5xl", title }) => {
         name="Hack Club Blogs"
         title={title}
         description="View blog posts written by Hack Clubbers."
-        image="https://github.com/ghost.png"
+        image="https://workshop-cards.hackclub.com/Blogs.png?theme=light&md=1&fontSize=250px&caption=Blog%2520posts%2520written%2520by%2520Hack%2520Clubbers"
         color="#ec3750"
       />
       <div className={`mx-auto ${maxW}`}>{children}</div>
