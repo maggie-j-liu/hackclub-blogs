@@ -17,7 +17,7 @@ const ProfilePage = ({ info }) => {
       <div className="flex flex-col items-center text-center">
         <div className="relative w-48 h-48 overflow-hidden border-4 rounded-full border-border">
           <Image
-            src={info.avatar}
+            src={info.avatar ? info.avatar : "/default-avatar.png"}
             layout="fill"
             alt={`${info.username}'s avatar`}
           />
