@@ -24,7 +24,7 @@ const Navbar = () => {
         </div>
         <div>
           {loading ? null : user ? (
-            <>
+            <span className="flex items-center">
               <Link href={`/user/${user.user_metadata.sub}`}>
                 <a className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100">
                   <Icon glyph="person" /> <span>{user.user_metadata.name}</span>
@@ -42,7 +42,7 @@ const Navbar = () => {
                 <span>Sign out</span>
                 <Icon glyph="door-leave" />
               </button>
-            </>
+            </span>
           ) : (
             <button
               type="button"
