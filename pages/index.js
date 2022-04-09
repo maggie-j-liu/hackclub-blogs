@@ -49,10 +49,13 @@ export const getStaticProps = async () => {
     }
     for (const item of feed.value.items) {
       posts.push({
-        title: item.title,
-        description: item.contentSnippet,
-        link: item.link,
-        date: item.isoDate,
+        title: item.title ?? "",
+        description: item.contentSnippet ?? "",
+        link: item.link ?? "",
+        date: item.isoDate ?? "",
+        blogTitle: feed.value.title ?? "",
+        author: item.creator ?? "",
+        blogLink: feed.value.link ?? "",
       });
     }
   }

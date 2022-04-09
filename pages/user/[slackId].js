@@ -15,17 +15,17 @@ const ProfilePage = ({ info }) => {
   return (
     <Layout>
       <div className="flex flex-col items-center text-center">
-        <div className="relative h-48 w-48 overflow-hidden rounded-full">
+        <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-border">
           <Image
             src={info.avatar}
             layout="fill"
             alt={`${info.username}'s avatar`}
           />
         </div>
-        <h1 className="text-gray-600 mt-2 text-4xl font-semibold">
+        <h1 className="mt-2 bg-gradient-to-r from-red to-orange bg-clip-text text-4xl font-semibold text-transparent">
           {info.username}
         </h1>
-        <p className="text-gray-500 mt-1 text-xl">
+        <p className="mt-1 text-xl text-muted">
           Joined on {format(new Date(info.created_at), "PPP")}
         </p>
       </div>
@@ -42,12 +42,14 @@ const ProfilePage = ({ info }) => {
                   href={blog.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="hover:text-red hover:underline hover:decoration-wavy"
+                  className="font-medium hover:text-red focus:text-red focus:outline-none"
                 >
                   {blog.link}
                 </a>
                 {user && user.user_metadata.sub === info.slack_id ? (
                   <button
+                    className="hover:text-red focus:text-red focus:outline-none"
+                    title="Delete Blog"
                     type="button"
                     onClick={(e) => {
                       e.preventDefault();
