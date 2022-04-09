@@ -2,7 +2,6 @@ import supabase from "../utils/supabase";
 import useAuth from "../utils/useAuth";
 import Parser from "rss-parser";
 import Posts from "../components/Posts";
-import signIn from "../utils/signIn";
 import Link from "next/link";
 import Layout from "../components/Layout";
 

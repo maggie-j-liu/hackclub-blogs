@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import supabase from "../utils/supabase";
 import useAuth from "../utils/useAuth";
-import { useRouter } from "next/router";
 import Layout from "../components/Layout";
+import signIn from "../utils/signIn";
 const New = () => {
   const { loading, user } = useAuth();
   const [link, setLink] = useState("");
-  const router = useRouter();
-  useEffect(() => {
-    if (!loading && user === null) {
-      router.replace("/");
-    }
-  }, [loading, user, router]);
   const submit = async () => {
     if (!link) return;
     console.log(link);
@@ -23,8 +17,28 @@ const New = () => {
     );
     setLink("");
   };
-  if (!user) {
+  console.log(loading, user);
+  if (loading) {
     return null;
+  }
+  if (!user) {
+    return (
+      <Layout>
+        <div className="text-lg">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              signIn();
+            }}
+            className="rounded-md bg-gradient-to-r from-red to-orange px-4 py-1 font-semibold text-white duration-100 hover:scale-105"
+          >
+            Sign In
+          </button>{" "}
+          to add a blog
+        </div>
+      </Layout>
+    );
   }
   return (
     <Layout>

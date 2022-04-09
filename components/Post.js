@@ -8,6 +8,8 @@ const Post = ({ post }) => {
         <a
           className="block w-max text-text hover:text-red hover:underline hover:decoration-wavy"
           href={post.link}
+          target="_blank"
+          rel="noreferrer"
         >
           <h2 className="w-max text-xl font-bold">{post.title}</h2>
         </a>
@@ -16,6 +18,8 @@ const Post = ({ post }) => {
         <a
           href={post.link}
           className="mt-3 block w-max rounded-full bg-smoke px-4 py-1.5 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
+          target="_blank"
+          rel="noreferrer"
         >
           Read More &rarr;
         </a>
