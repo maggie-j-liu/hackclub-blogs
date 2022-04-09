@@ -25,19 +25,19 @@ const New = () => {
 
   if (!user) {
     return (
-      <Layout>
-        <div className="text-lg">
+      <Layout title="Sign In">
+        <div className="flex flex-col items-center justify-center h-48 m-auto space-y-4 text-center">
+          <h1 className="text-5xl font-semibold">To add a blog,</h1>
           <button
             type="button"
             onClick={(e) => {
               e.preventDefault();
               signIn();
             }}
-            className="rounded-md bg-gradient-to-r from-red to-orange px-4 py-1 font-semibold text-white duration-100 hover:scale-105"
+            className="px-4 py-1 font-semibold text-white duration-100 rounded-full bg-gradient-to-r from-red to-orange hover:scale-105"
           >
-            Sign In
-          </button>{" "}
-          to add a blog
+            Sign in with Slack
+          </button>
         </div>
       </Layout>
     );
@@ -45,11 +45,11 @@ const New = () => {
 
   return (
     <Layout>
-      <h1 className="mx-auto w-max bg-gradient-to-r from-red to-orange bg-clip-text pb-1 text-center text-5xl font-bold text-transparent">
+      <h1 className="pb-1 mx-auto text-5xl font-bold text-center text-transparent w-max bg-gradient-to-r from-red to-orange bg-clip-text">
         Add a Blog
       </h1>
       <div className="mx-auto w-max">
-        <label className="mt-6 block">
+        <label className="block mt-6">
           <span className="block text-xl">RSS Feed Link</span>
           <input
             type="url"
@@ -57,7 +57,7 @@ const New = () => {
             onChange={(e) => {
               setLink(e.target.value);
             }}
-            className="w-96 rounded border-2 border-red px-2 py-1 text-lg focus:border-orange focus:outline-none"
+            className="px-2 py-1 text-lg border-2 rounded w-96 border-red focus:border-orange focus:outline-none"
             placeholder="https://example.com/rss.xml"
           />
         </label>

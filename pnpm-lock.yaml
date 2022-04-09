@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@hackclub/meta': ^1.1.32
   '@supabase/supabase-js': ^1.33.3
   '@tailwindcss/line-clamp': ^0.3.1
   autoprefixer: ^10.4.4
@@ -14,15 +15,18 @@ specifiers:
   react: 18.0.0
   react-dom: 18.0.0
   rss-parser: ^3.12.0
+  supercons: ^0.0.1
   tailwindcss: ^3.0.23
 
 dependencies:
+  '@hackclub/meta': 1.1.32_react@18.0.0
   '@supabase/supabase-js': 1.33.3
   date-fns: 2.28.0
   next: 12.1.4_react-dom@18.0.0+react@18.0.0
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
   rss-parser: 3.12.0
+  supercons: 0.0.1_react@18.0.0
 
 devDependencies:
   '@tailwindcss/line-clamp': 0.3.1_tailwindcss@3.0.23
@@ -88,6 +92,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@hackclub/meta/1.1.32_react@18.0.0:
+    resolution: {integrity: sha512-vevgJP1jsbSn1TCLPJWZsmVJ51DcyOsXtMlUXmIPPGaTNPm2WwEQLOWrVmb5lpZJsONLeSmcQCrx4rpmGeyYIw==}
+    peerDependencies:
+      react: ^17.0.1
+    dependencies:
+      react: 18.0.0
+    dev: false
 
   /@humanwhocodes/config-array/0.9.5:
     resolution: {integrity: sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw==}
@@ -2130,6 +2142,14 @@ packages:
         optional: true
       babel-plugin-macros:
         optional: true
+    dependencies:
+      react: 18.0.0
+    dev: false
+
+  /supercons/0.0.1_react@18.0.0:
+    resolution: {integrity: sha512-ET70X83boPmv8ze9r5CuGXJCBZ9mbQ32RgE1CIwOX4K2hv9yA9mu8mtkt52VKER1PDZFSf5v/+9neLD5d1bFCQ==}
+    peerDependencies:
+      react: ^16.12.0 || ^17.0.1
     dependencies:
       react: 18.0.0
     dev: false
