@@ -13,14 +13,13 @@ export const AuthProvider = ({ children }) => {
     } else {
       setAuth({ ...initialState, loading: false });
     }
-    return () =>
-      supabase.auth.onAuthStateChange(async (_event, session) => {
-        if (session) {
-          setAuth({ user: session.user, session, loading: false });
-        } else {
-          setAuth({ ...initialState, loading: false });
-        }
-      });
+    supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (session) {
+        setAuth({ user: session.user, session, loading: false });
+      } else {
+        setAuth({ ...initialState, loading: false });
+      }
+    });
   }, []);
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
