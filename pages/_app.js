@@ -6,7 +6,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="text-text">
+        <Component {...pageProps} />
+      </div>
     </AuthProvider>
   );
 }

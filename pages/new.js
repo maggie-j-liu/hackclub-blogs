@@ -26,7 +26,7 @@ const New = () => {
   if (!user) {
     return (
       <Layout title="Sign In">
-        <div className="flex flex-col items-center justify-center h-48 m-auto space-y-4 text-center">
+        <div className="m-auto flex h-48 flex-col items-center justify-center space-y-4 text-center">
           <h1 className="text-5xl font-semibold">To add a blog,</h1>
           <button
             type="button"
@@ -34,7 +34,7 @@ const New = () => {
               e.preventDefault();
               signIn();
             }}
-            className="px-4 py-1 font-semibold text-white duration-100 rounded-full bg-gradient-to-r from-red to-orange hover:scale-105"
+            className="rounded-full bg-gradient-to-r from-red to-orange px-4 py-1 font-semibold text-white duration-100 hover:scale-105"
           >
             Sign in with Slack
           </button>
@@ -45,24 +45,26 @@ const New = () => {
 
   return (
     <Layout>
-      <h1 className="pb-1 mx-auto text-5xl font-bold text-center text-transparent w-max bg-gradient-to-r from-red to-orange bg-clip-text">
+      <h1 className="mx-auto w-max bg-gradient-to-r from-red to-orange bg-clip-text pb-1 text-center text-5xl font-bold text-transparent">
         Add a Blog
       </h1>
       <div className="mx-auto w-max">
-        <label className="block mt-6">
-          <span className="block text-xl">RSS Feed Link</span>
+        <label className="mt-6 block">
+          <span className="block text-lg font-semibold tracking-tight text-secondary">
+            RSS Feed Link
+          </span>
           <input
             type="url"
             value={link}
             onChange={(e) => {
               setLink(e.target.value);
             }}
-            className="px-2 py-1 text-lg border-2 rounded w-96 border-red focus:border-orange focus:outline-none"
+            className="w-96 rounded border-2 border-red px-2 py-1 text-lg focus:border-orange focus:outline-none"
             placeholder="https://example.com/rss.xml"
           />
         </label>
         <button
-          className="mt-3 rounded-lg bg-gradient-to-r from-red to-orange px-6 py-1.5 text-xl font-semibold text-white duration-100 hover:scale-105 focus:scale-105 disabled:cursor-not-allowed disabled:saturate-0 disabled:hover:scale-100"
+          className="mt-3 rounded-full bg-gradient-to-r from-red to-orange px-6 py-1.5 text-xl font-semibold text-white duration-100 hover:scale-105 focus:scale-105 disabled:cursor-not-allowed disabled:saturate-0 disabled:hover:scale-100"
           type="button"
           onClick={(e) => {
             e.preventDefault();

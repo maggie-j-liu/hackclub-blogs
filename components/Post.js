@@ -1,3 +1,5 @@
+import Icon from "supercons";
+
 const Post = ({ post }) => {
   return (
     <div className="flex gap-4">
@@ -8,7 +10,7 @@ const Post = ({ post }) => {
       <div className="flex-shrink">
         <div className="flex flex-wrap items-center gap-x-4">
           <a
-            className="block w-max text-text hover:text-red hover:underline hover:decoration-wavy"
+            className="block w-max hover:text-red hover:underline hover:decoration-wavy"
             href={post.link}
             target="_blank"
             rel="noreferrer"
@@ -32,11 +34,11 @@ const Post = ({ post }) => {
         <p className="mt-2 text-slate line-clamp-3">{post.description}</p>
         <a
           href={post.link}
-          className="mt-3 block w-max rounded-full bg-smoke px-4 py-1.5 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
+          className="mt-3 flex w-max items-center gap-0.5 rounded-full bg-smoke px-4 py-1.5 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
           target="_blank"
           rel="noreferrer"
         >
-          Read More &rarr;
+          Read More <Icon size={24} glyph="enter" />
         </a>
       </div>
     </div>
