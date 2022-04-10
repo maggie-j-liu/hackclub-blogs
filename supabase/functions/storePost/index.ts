@@ -1,22 +1,18 @@
-
 import { serve } from 'https://deno.land/std@0.131.0/http/server.ts'
+import { supabaseClient } from '../_shared/supabaseClient.ts'
 import { corsHeaders } from '../_shared/cors.ts'
 
-console.log(`Function "browser-with-cors" up and running!`)
-
-serve(async (req) => {
-  // This is needed if you're planning to invoke your function from a browser.
+serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
 
   try {
-    const { name } = await req.json()
-    const data = {
-      message: `Hello ${name}!`,
-    }
+    supabaseClient.auth.setAuth(req.headers.get('Authorization')!.replace('Bearer ', ''))
+    
+    await supabase.from("posts").insert(await req.json())
 
-    return new Response(JSON.stringify(data), {
+    return new Response(JSON.stringify({ {ok:200}, error }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       status: 200,
     })
@@ -26,4 +22,3 @@ serve(async (req) => {
       status: 400,
     })
   }
-})
