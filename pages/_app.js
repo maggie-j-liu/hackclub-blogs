@@ -1,4 +1,6 @@
 import Navbar from "../components/Navbar";
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 import "../styles/globals.css";
 import { AuthProvider } from "../utils/useAuth";
 

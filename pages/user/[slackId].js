@@ -44,7 +44,7 @@ const ProfilePage = ({ info }) => {
             {info.blogs.map((blog) => (
               <div
                 key={blog.link}
-                className="flex justify-between gap-2 rounded-md border-2 border-border px-4 py-2 text-lg shadow-md"
+                className="flex items-center justify-between gap-2 rounded-md border-2 border-border px-4 py-2 text-lg shadow-md"
               >
                 <a
                   href={blog.link}
