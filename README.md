@@ -2,7 +2,7 @@
 
 Hack Club Blogs is a platform to check out blog posts written by [Hack Clubbers](https://hackclub.com). Through importing what you already have or creating a new custom blog on-site, this app platform lets you make and read blog posts with others!
 
-Check out the demo for it [here](https://hackclub-blogs.vercel.app/)
+Check out the demo for it [here](https://hackclub-blogs.vercel.app/).
 
 1. Sign into your account.
 
