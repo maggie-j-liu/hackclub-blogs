@@ -1,6 +1,6 @@
 import Image from "next/image";
 import supabase from "../../utils/supabase";
-import format from "date-fns/format";
+import { formatInTimeZone } from "date-fns-tz";
 import useAuth from "../../utils/useAuth";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
@@ -31,7 +31,7 @@ const ProfilePage = ({ info }) => {
           {info.username}
         </h1>
         <p className="mt-1 text-xl text-muted">
-          Joined on {format(new Date(info.created_at), "PPP")}
+          Joined on {formatInTimeZone(new Date(info.created_at), "GMT", "PPP")}
         </p>
       </div>
       {info.blogs.length === 0 ? (
@@ -86,7 +86,7 @@ const ProfilePage = ({ info }) => {
                     </a>
                   </Link>
                   <span className="text-muted">
-                    {format(new Date(post.created_at), "PP")}
+                    {formatInTimeZone(new Date(post.created_at), "GMT", "PP")}
                   </span>
                 </div>
               );

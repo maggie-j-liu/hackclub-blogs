@@ -1,8 +1,10 @@
-import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import Icon from "supercons";
 
 const Post = ({ post }) => {
-  const formattedDate = post.date ? format(new Date(post.date), "PP") : null;
+  const formattedDate = post.date
+    ? formatInTimeZone(new Date(post.date), "GMT", "PP")
+    : null;
   return (
     <div className="flex gap-4">
       <div className="hidden w-36 flex-shrink-0 text-muted md:block">
