@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.w-md-editor-text {
+.w-md-editor-text,
+.wmde-markdown {
   @apply text-lg;
+}
+
+.wmde-markdown ol {
+  @apply list-[revert];
+}
+
+.wmde-markdown ul {
+  @apply list-[revert];
 }
