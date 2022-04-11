@@ -3,10 +3,16 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import supabase from "../../utils/supabase";
 import { useRouter } from "next/router";
+import rehypeSanitize from "rehype-sanitize";
 
 const MDEditor = dynamic(
   () => import("@uiw/react-md-editor").then((mod) => mod.default),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => {
+      return <div style={{ height: "400px" }} />;
+    },
+  }
 );
 
 const Post = () => {
@@ -121,6 +127,9 @@ const Post = () => {
                 },
               },
             ]}
+            previewOptions={{
+              rehypePlugins: [[rehypeSanitize]],
+            }}
           />
         </div>
         <button

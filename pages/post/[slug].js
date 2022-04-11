@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import rehypeSanitize from "rehype-sanitize";
 import Layout from "../../components/Layout";
 import supabase from "../../utils/supabase";
 const EditorMarkdown = dynamic(
@@ -16,7 +17,10 @@ const Post = ({ post }) => {
         {post.title}
       </h1>
       <div className="mx-auto max-w-prose" data-color-mode="light">
-        <EditorMarkdown source={post.content} />
+        <EditorMarkdown
+          rehypePlugins={[[rehypeSanitize]]}
+          source={post.content}
+        />
       </div>
     </Layout>
   );

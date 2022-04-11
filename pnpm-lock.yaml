@@ -16,6 +16,7 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.1.8
   react: 18.0.0
   react-dom: 18.0.0
+  rehype-sanitize: ^5.0.1
   rss-parser: ^3.12.0
   supercons: ^0.0.1
   tailwindcss: ^3.0.23
@@ -29,6 +30,7 @@ dependencies:
   next-remove-imports: 1.0.6
   react: 18.0.0
   react-dom: 18.0.0_react@18.0.0
+  rehype-sanitize: 5.0.1
   rss-parser: 3.12.0
   supercons: 0.0.1_react@18.0.0
 

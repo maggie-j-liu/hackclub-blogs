@@ -45,7 +45,7 @@ const New = () => {
 
   return (
     <Layout>
-      <h1 className="mx-auto w-max bg-gradient-to-r from-red to-orange bg-clip-text pb-1 text-center text-5xl font-bold text-transparent">
+      <h1 className="mx-auto w-max bg-gradient-to-r from-red to-orange bg-clip-text pb-1 text-center text-5xl font-extrabold text-transparent">
         Add a Blog
       </h1>
       <div className="mx-auto w-max">
@@ -59,7 +59,7 @@ const New = () => {
             onChange={(e) => {
               setLink(e.target.value);
             }}
-            className="w-96 rounded border-2 border-red px-2 py-1 text-lg focus:border-orange focus:outline-none"
+            className="mt-1 w-96 border-b-2 border-border text-lg placeholder:text-placeholder focus:border-muted focus:outline-none"
             placeholder="https://example.com/rss.xml"
           />
         </label>

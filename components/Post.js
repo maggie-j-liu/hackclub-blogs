@@ -1,10 +1,12 @@
+import { format } from "date-fns";
 import Icon from "supercons";
 
 const Post = ({ post }) => {
+  const formattedDate = post.date ? format(new Date(post.date), "PP") : null;
   return (
     <div className="flex gap-4">
       <div className="hidden w-36 flex-shrink-0 text-muted md:block">
-        <div>{post.date.split("T")[0]}</div>
+        <div>{formattedDate}</div>
         <div className="text-sm font-light">{post.author}</div>
       </div>
       <div className="flex-shrink">
@@ -27,7 +29,7 @@ const Post = ({ post }) => {
           ) : null}
         </div>
         <div className="text-muted md:hidden">
-          {post.date ? post.date.split("T")[0] : null}
+          {formattedDate}
           {post.date && post.author ? " • " : null}
           {post.author ?? null}
         </div>

@@ -5,6 +5,7 @@ import useAuth from "../../utils/useAuth";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
 import Icon from "supercons";
+import Link from "next/link";
 
 const ProfilePage = ({ info }) => {
   const { user } = useAuth();
@@ -44,7 +45,7 @@ const ProfilePage = ({ info }) => {
             {info.blogs.map((blog) => (
               <div
                 key={blog.link}
-                className="flex items-center justify-between gap-2 rounded-md border-2 border-border px-4 py-2 text-lg shadow-md"
+                className="flex items-center justify-between gap-2 rounded-2xl border-2 border-border px-4 py-2 text-lg"
               >
                 <a
                   href={blog.link}
@@ -72,6 +73,27 @@ const ProfilePage = ({ info }) => {
           </div>
         </div>
       )}
+      {info.posts.length === 0 ? null : (
+        <div className="mx-auto mt-8 max-w-2xl">
+          <h2 className="text-3xl font-semibold text-slate">Posts</h2>
+          <div className="flex flex-col divide-y-2 divide-border">
+            {info.posts.map((post) => {
+              return (
+                <div key={post.slug} className="py-4">
+                  <Link href={`/post/${post.slug}`}>
+                    <a className="block w-max hover:text-red hover:underline hover:decoration-wavy">
+                      <h3 className="w-max text-xl font-bold">{post.title}</h3>
+                    </a>
+                  </Link>
+                  <span className="text-muted">
+                    {format(new Date(post.created_at), "PP")}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </Layout>
   );
 };
@@ -87,7 +109,13 @@ export const getServerSideProps = async ({ params }) => {
       created_at,
       avatar,
       blogs (
-        link
+        link,
+        created_at
+      ),
+      posts (
+        title,
+        slug,
+        created_at
       )
     `
     )
@@ -98,6 +126,9 @@ export const getServerSideProps = async ({ params }) => {
       notFound: true,
     };
   }
+
+  info.blogs.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  info.posts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   return {
     props: { info },
   };

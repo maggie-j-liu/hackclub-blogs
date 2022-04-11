@@ -8,17 +8,23 @@ const Navbar = () => {
   const { user, loading } = useAuth();
   return (
     <nav className="h-16 px-8">
-      <div className="flex items-center justify-between h-full max-w-5xl mx-auto">
-        <div className="flex gap-8">
+      <div className="mx-auto flex h-full max-w-5xl items-center justify-between">
+        <div className="flex gap-6">
           <Link href="/">
-            <a className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100">
+            <a className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100">
               Home
             </a>
           </Link>
-          <Link href="/new" passHref>
-            <a className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100">
+          <Link href="/new">
+            <a className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100">
               <Icon glyph="plus" />
               Add Blog
+            </a>
+          </Link>
+          <Link href="/post">
+            <a className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100">
+              <Icon glyph="post" />
+              Write Post
             </a>
           </Link>
         </div>
@@ -26,14 +32,14 @@ const Navbar = () => {
           {loading ? null : user ? (
             <span className="flex items-center">
               <Link href={`/user/${user.user_metadata.sub}`}>
-                <a className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100">
+                <a className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100">
                   <Icon glyph="person" /> <span>{user.user_metadata.name}</span>
                 </a>
               </Link>
               &nbsp;&nbsp;
               <button
                 type="button"
-                className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100"
+                className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
                 onClick={async (e) => {
                   e.preventDefault();
                   await supabase.auth.signOut();
@@ -46,7 +52,7 @@ const Navbar = () => {
           ) : (
             <button
               type="button"
-              className="flex items-center px-3 py-1 mt-3 space-x-1 text-sm font-semibold duration-100 rounded-full opacity-75 w-max bg-smoke text-secondary hover:opacity-100"
+              className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
               onClick={(e) => {
                 e.preventDefault();
                 signIn();
