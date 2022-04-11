@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import supabase from "../../utils/supabase";
 import { useRouter } from "next/router";
 import rehypeSanitize from "rehype-sanitize";
+import useAuth from "../../utils/useAuth";
+import signIn from "../../utils/signIn";
 
 const MDEditor = dynamic(
   () => import("@uiw/react-md-editor").then((mod) => mod.default),
@@ -16,6 +18,7 @@ const MDEditor = dynamic(
 );
 
 const Post = () => {
+  const { loading, user } = useAuth();
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
@@ -75,6 +78,30 @@ const Post = () => {
   useEffect(() => {
     setError("");
   }, [title, slug, content]);
+
+  if (loading) {
+    return null;
+  }
+
+  if (!user) {
+    return (
+      <Layout title="Sign In">
+        <div className="m-auto flex h-48 flex-col items-center justify-center space-y-4 text-center">
+          <h1 className="text-5xl font-semibold">To write a post,</h1>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              signIn();
+            }}
+            className="rounded-full bg-gradient-to-r from-red to-orange px-4 py-1 font-semibold text-white duration-100 hover:scale-105"
+          >
+            Sign in with Slack
+          </button>
+        </div>
+      </Layout>
+    );
+  }
   return (
     <Layout>
       <div className="mx-auto max-w-prose text-lg">
