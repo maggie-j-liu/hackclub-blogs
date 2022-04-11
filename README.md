@@ -4,15 +4,15 @@ Hack Club Blogs is a platform to check out blog posts written by [Hack Clubbers]
 
 1. Sign into your account.
 
-    <img src="/public/a.gif" />
+    <img src="/public/a.gif" style="width: 600px" />
 
 2. Create a new post or link your existing blog.
 
-    <img src="/public/b.gif" />
+    <img src="/public/b.gif" style="width: 600px" />
 
 3. View your posts and others' posts on the platform.
 
-    <img src="/public/c.gif" />
+    <img src="/public/c.gif" style="width: 600px" />
 
 ## Using Supabase
 
