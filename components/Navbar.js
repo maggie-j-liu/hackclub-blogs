@@ -50,16 +50,28 @@ const Navbar = () => {
               </button>
             </span>
           ) : (
-            <button
-              type="button"
-              className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
-              onClick={(e) => {
-                e.preventDefault();
-                signIn();
-              }}
-            >
-              <span>Sign in with Slack</span> <Icon glyph="slack" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn();
+                }}
+              >
+                <span>Sign in with Slack</span> <Icon glyph="slack" />
+              </button>
+              <button
+                type="button"
+                className="mt-3 flex w-max items-center space-x-1 rounded-full bg-smoke px-3 py-1 text-sm font-semibold text-secondary opacity-75 duration-100 hover:opacity-100"
+                onClick={(e) => {
+                  e.preventDefault();
+                  signIn("discord");
+                }}
+              >
+                <span>Sign in with Discord</span> <Icon glyph="sam" />
+              </button>
+            </div>
           )}
         </div>
       </div>

@@ -1,8 +1,8 @@
 import supabase from "./supabase";
-const signIn = async () => {
+const signIn = async (provider = "slack") => {
   await supabase.auth.signIn(
     {
-      provider: "slack",
+      provider,
     },
     {
       redirectTo: window.location.href,
